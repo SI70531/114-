@@ -28,6 +28,7 @@ public class SimpleCalculator {
                 break;
             case 5:
                 System.out.println("DIV1 : " + (a / b));
+                System.out.println("餘數 : " + (a % b));
                 break;
             default:
                 System.out.println("Invalid choice.");
