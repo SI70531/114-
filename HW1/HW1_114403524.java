@@ -8,6 +8,7 @@ public class HW1_114403524{
             int n = scanner.nextInt();
             if (n == -1) {
                 System.out.println("程式結束");
+                scanner.close();
                 return;
             }
             while (n <= 0 && n != -1) {
