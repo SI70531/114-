@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Pyramid{
+public class HW1_114403524{
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while(true) {
@@ -10,7 +10,7 @@ public class Pyramid{
                 System.out.println("程式結束");
                 return;
             }
-            while (n <= 0) {
+            while (n <= 0 && n != -1) {
                 System.out.println("輸入錯誤!");
                 System.out.print("請輸入層數，或輸入-1結束：");
                 n = scanner.nextInt();
