@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class HW1_114403524{
+    static int round;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while(true) {
@@ -100,8 +101,59 @@ public class HW1_114403524{
                 System.out.println();
                 break;
             case 2:
-                System.out.println("請輸入陣列長度: ");
+                System.out.print("請輸入陣列長度 n: ");
+                int count = scanner.nextInt();
+                while(count <= 0){
+                    System.out.println("輸入錯誤!");
+                    System.out.print("請輸入陣列長度 n: ");
+                    count = scanner.nextInt();
+                }
+                int[] arr = new int[count];
+                System.out.printf("請輸入%d個整數: %n", count);
+                for(int i = 0; i < count ; i++){
+                    arr[i] = scanner.nextInt();
+                }
+                round = 1;
+                System.out.printf("%n開始排序%n");
+                quickSort(arr, 0, count - 1);
+                System.out.println("最終排序結果:");
+                for (int i = 0; i < count; i++) {
+                    System.out.print(arr[i] + " ");
+                }
+                System.out.printf("%n%n");
+                break;
             }
         }
+    }
+    public static void quickSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pi = partition(arr, low, high);
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+    public static int partition(int[] arr, int low, int high) {
+        int pivot = arr[high];
+        int i = (low - 1);
+        for (int j = low; j < high; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+        System.out.printf("第%d輪分堆(以%d為基準): ", round, pivot);
+        for (int j = 0; j < arr.length; j++) {
+            int num = arr[j];
+            System.out.print(num + " ");
+        }
+        System.out.println();
+        round++;
+
+        return i + 1;
     }
 }
